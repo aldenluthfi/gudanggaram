@@ -116,7 +116,7 @@ Sebuah proyek Django sederhana sebagai Tugas Mata Kuliah Pemrograman Berbasis Pl
 ### Jawaban dari Pertanyaan
 
 1. **Bagan Arsitektur Django**
-![](static/images/raster/bagan.png)
+![](static/images/raster/MVT.png)
 Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat diteruskan ke View yang sesuai. kemudian View tersebut akan membaca/menulis data di Model dan menggunakan Template untuk menampilkan dan mengembalikan _response_ ke _user_
 
 2. **Mengapa perlu menggunakan virtual environment untuk membuat suatu proyek**
@@ -148,3 +148,163 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
     Untuk MVVM, berbeda dari yang lain, komponen View dan komponen Model pada arsitektur ini tidak berkomunikasi sama sekali.
 
 ## Tugas 3
+
+### Proses Implementasi Form
+
+1. Membuat ```forms.py``` di direktori ```main``` dengan isi
+
+    ```python
+    from main.models import Salts
+    from django import forms
+
+    class SaltsForm(forms.ModelForm):
+        class Meta:
+            model = Salts
+            fields = '__all__'
+
+    ```
+
+2. Menambahkan Method ```create_page``` untuk menambah entri database di file ```views.py``` di direktori ```main```
+
+    ```python
+    def create_page(request):
+        form = SaltsForm(request.POST or None)
+
+        if request.method == "POST" and form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('main:main_page'))
+
+        context = {'form': form}
+
+        return render(request, "create.html", context)
+
+    ```
+
+    BONUS: Saya juga menambahkan fungsionalitas delete untuk menghapus entri pada database
+
+3. Routing URL ke laman yang bersangkutan di file ```urls.py``` di direktori ```main```
+
+    ```python
+    urlpatterns = [
+        ...
+        path('create/', create_page, name='create'),
+        path('delete/<int:id>/', delete_salt, name='delete'),
+        ...
+    ]
+
+    ```
+
+4. Menambahkan folder ```templates``` di direktori utama dan ```base.html``` sebagai basis dari laman-laman lain
+
+5. Menambahkan lokasi folder ```templates``` tersebut ke ```settings.py``` di direktori ```gudanggaram```
+
+    ```python
+    ...
+    'DIRS': [BASE_DIR / 'templates'],
+    ...
+    ```
+
+6. Mengimplementasikan database ke dalam laman utama ```main.html``` dan juga menjadi perpanjangan dari ```base.html``` di direktori utma
+
+    ```html
+    ...
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+
+        {% for salt in salts %}
+            <tr>
+                <td>{{salt.name}}</td>
+                <td>{{salt.amount}}</td>
+                <td>{{salt.description}}</td>
+                <td id="delete">
+                    <a href="{% url 'main:delete' salt.id %}">
+                        <button class="tablebutton">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    ...
+    ```
+7. Menggunakan folder ```static``` untuk mengorganisir aset-aset yang digunakan seperti gambar dan *stylesheet* CSS untuk mempercantik laman
+
+8. Membuat app baru bernama ```debug``` untuk melihat tampilan JSON dan XML dari app ```main```
+
+9. Menambahkan fungsi-fungsi yang diperlukan untuk menampilkan JSON dan XML baik secara keseluruhan maupun per entri database
+
+    ```python
+    def show_xml(request):
+        data = Salts.objects.all()
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+    def show_json(request):
+        data = Salts.objects.all()
+        return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+    def show_xml_by_id(request, id):
+        data = Salts.objects.filter(pk=id)
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+    def show_json_by_id(request, id):
+        data = Salts.objects.filter(pk=id)
+        return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+    ```
+
+10. Merouting kembali URL yang bersangkutan di file ```urls.py``` di direktori ```debug```
+
+    ```python
+    urlpatterns = [
+        path('json/', show_json, name='json'),
+        path('xml/', show_xml, name='xml'),
+        path('json/<int:id>/', show_json_by_id, name='json_by_id'),
+        path('xml/<int:id>/', show_xml_by_id, name='xml_by_id'),
+    ]
+    ```
+
+11. Mengetest aplikasi pada localhost dengan command:
+    ```
+    python manage.py runserver
+    ```
+    kemudian membuka ```http://localhost:8000/``` di _browser_
+
+12. BONUS: terkena ban di *platform* Adaptable
+
+### Jawaban Dari Pertanyaan
+
+1. **Perbedaan antara POST dan GET**
+
+    Perbedaan antara keduanya terletak pada tujuan masing masing metode digunakan. Metode GET biasa digunakan ketika *user* ingin mendapatkan data dari server. Sedangkan, metode POST digunakan ketika *user* ingin mengirim data ke server. Penggunaan metode GET
+    untuk mengirimkan data mengharuskan *user* untuk menuliskan data yang mau disampaikan ke server di dalam url, sehingga data-data pribadi sangat tidak aman jika dikirimkan dengan data ini ketimbang metode POST.
+
+2. **Perbedaan antara HTML vs JSON vs XML**
+
+    Pada kasus ini HTML berada pada cakupan yang berbeda dengan JSON dan XML. HTML digunakan sebagai kerangka dasar sebuah website, HTML menentukan apa saja yang akan tampil di website tersebut dan penggayaan yang sederhana. sedangkan JSON dan XML adalah sarana transfer data, XML cenderung lebih sulit dibaca daripada JSON namun dianggap sebagai struktur data yang lebih *robust* dari JSON. Meskipun demikian, JSON memiliki *support* terhadap *array* sedangkan XML tidak. Diantara perbedaan yang sudah disebutkan masih banyak perbedaan lain, pada hakikatnya JSON dan XML berperan sama yaitu mentransfer data namun format penulisan dan kemampuannya lah yang membedakannya.
+
+3. **Mengapa JSON lebih banyak dipakai di web modern**
+
+    JSON lebih banyak dipakai karena formatnya yang lebih mudah dibaca manusia. Selain itu, format JSON yang cenderung memiliki karakter lebih sedikit dari format lain seperti XML memungkinkan JSON untuk diproses lebih cepat daripada format lain.
+
+### Screenshot Postman
+
+1. **HTML Source**
+![](static/images/raster/HTML.png)
+
+2. **JSON**
+![](static/images/raster/JSON.png)
+
+3. **JSON by ID**
+![](static/images/raster/JSONID.png)
+
+4. **XML**
+![](static/images/raster/XML.png)
+
+5. **XML by ID**
+![](static/images/raster/XMLID.png)
