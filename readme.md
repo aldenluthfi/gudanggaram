@@ -182,7 +182,9 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
     BONUS: Saya juga menambahkan fungsionalitas delete untuk menghapus entri pada database
 
-3. Routing URL ke laman yang bersangkutan di file ```urls.py``` di direktori ```main```
+3. Mengimplementasikan form yang tadi sudah dibuat ke dalam laman baru dengan template html yang baru ```create.html```.
+
+4. Routing URL ke laman yang bersangkutan di file ```urls.py``` di direktori ```main```
 
     ```python
     urlpatterns = [
@@ -194,9 +196,9 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
     ```
 
-4. Menambahkan folder ```templates``` di direktori utama dan ```base.html``` sebagai basis dari laman-laman lain
+5. Menambahkan folder ```templates``` di direktori utama dan ```base.html``` sebagai basis dari laman-laman lain
 
-5. Menambahkan lokasi folder ```templates``` tersebut ke ```settings.py``` di direktori ```gudanggaram```
+6. Menambahkan lokasi folder ```templates``` tersebut ke ```settings.py``` di direktori ```gudanggaram```
 
     ```python
     ...
@@ -204,7 +206,7 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
     ...
     ```
 
-6. Mengimplementasikan database ke dalam laman utama ```main.html``` dan juga menjadi perpanjangan dari ```base.html``` di direktori utma
+7. Mengimplementasikan database ke dalam laman utama ```main.html``` dan juga menjadi perpanjangan dari ```base.html``` di direktori utama
 
     ```html
     ...
@@ -233,11 +235,12 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
     </table>
     ...
     ```
-7. Menggunakan folder ```static``` untuk mengorganisir aset-aset yang digunakan seperti gambar dan *stylesheet* CSS untuk mempercantik laman
 
-8. Membuat app baru bernama ```debug``` untuk melihat tampilan JSON dan XML dari app ```main```
+8. Menggunakan folder ```static``` untuk mengorganisir aset-aset yang digunakan seperti gambar dan *stylesheet* CSS untuk mempercantik laman
 
-9. Menambahkan fungsi-fungsi yang diperlukan untuk menampilkan JSON dan XML baik secara keseluruhan maupun per entri database
+9. Membuat app baru bernama ```debug``` untuk melihat tampilan JSON dan XML dari app ```main```
+
+10. Menambahkan fungsi-fungsi yang diperlukan untuk menampilkan JSON dan XML baik secara keseluruhan maupun per entri database
 
     ```python
     def show_xml(request):
@@ -258,7 +261,7 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
     ```
 
-10. Merouting kembali URL yang bersangkutan di file ```urls.py``` di direktori ```debug```
+11. Merouting kembali URL yang bersangkutan di file ```urls.py``` di direktori ```debug```
 
     ```python
     urlpatterns = [
@@ -269,13 +272,13 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
     ]
     ```
 
-11. Mengetest aplikasi pada localhost dengan command:
+12. Mengetest aplikasi pada localhost dengan command:
     ```
     python manage.py runserver
     ```
     kemudian membuka ```http://localhost:8000/``` di _browser_
 
-12. BONUS: terkena ban di *platform* Adaptable
+13. BONUS: terkena ban di *platform* Adaptable
 
 ### Jawaban Dari Pertanyaan
 
