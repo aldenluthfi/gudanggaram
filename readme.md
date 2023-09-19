@@ -1,8 +1,10 @@
-Gudang Garam
+# Gudang Garam
 
-Sebuah proyek Django sederhana sebagai Tugas 2 Mata Kuliah Pemrograman Berbasis Platform oleh Alden Luthfi 2206028932. Proyek ini di buat dengan sistem operasi MacOS.
+Sebuah proyek Django sederhana sebagai Tugas Mata Kuliah Pemrograman Berbasis Platform oleh Alden Luthfi 2206028932. Proyek ini di buat dengan sistem operasi MacOS.
 
-## Proses Pembuatan Projek Django
+## Tugas 2
+
+### Proses Pembuatan Projek Django
 1. Membuat sebuah _repository_ Github baru bernama ```gudanggaram```
 2. Meng-_clone repostiory_ kosong tersebut ke komputer
 3. Di direktori asal Membuat _virtual environment_ Python baru dengan command:
@@ -111,10 +113,10 @@ Sebuah proyek Django sederhana sebagai Tugas 2 Mata Kuliah Pemrograman Berbasis 
 
 18. Melakukan deploy app ke situs _Adaptable_
 
-## Jawaban dari Pertanyaan
+### Jawaban dari Pertanyaan
 
 1. **Bagan Arsitektur Django**
-![](bagan.png)
+![](static/bagan.png)
 Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat diteruskan ke View yang sesuai. kemudian View tersebut akan membaca/menulis data di Model dan menggunakan Template untuk menampilkan dan mengembalikan _response_ ke _user_
 
 2. **Mengapa perlu menggunakan virtual environment untuk membuat suatu proyek**
@@ -145,3 +147,4 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
     Untuk MVVM, berbeda dari yang lain, komponen View dan komponen Model pada arsitektur ini tidak berkomunikasi sama sekali.
 
+## Tugas 3
