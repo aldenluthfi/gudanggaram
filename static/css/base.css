@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Cartograph Sans CF';
+  src: ('../fonts/Cartograph Sans CF DemiBold Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cartograph Sans CF';
+  src: ('../fonts/Cartograph Sans CF Bold Italic.ttf');
+  font-weight: Bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: ('../fonts/GreycliffCF-Heavy.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: ('../fonts/GreycliffCF-HeavyOblique.otf');
+  font-style: oblique;
+}
+
+h1 {
+  font-family: 'Greycliff CF';
+  font-style: normal;
+}
+
+h2, h3, h4, h5, h6{
+  font-family: 'Cartograph Sans CF';
+  font-weight: Bold;
+  font-style: italic;
+}
+
+p {
+  font-size: 28px;
+}
+
+body {
+  background-color: #fff4d7;
+  color: #202020;
+  font-family: 'Cartograph Sans CF';
+  font-style: italic;
+}
+
+table {
+  text-align: left;
+  font-size: 28px;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1em;
+}
+
+th {
+  font-family: 'Cartograph Sans CF';
+  font-weight: Bold;
+  font-style: italic;
+}
+
+
+td {
+  font-family: 'Cartograph Sans CF';
+  font-style: italic;
+}
+
+.button {
+  background: rgba(255, 255, 255, 0);
+
+  font-family: 'Cartograph Sans CF';
+  font-style: italic;
+  font-size: 28px;
+
+  border-radius: 0.3em;
+  border: solid 0.1em #202020;
+
+  text-align: center;
+  height: 2em;
+  width: 10em;
+}
+
+.button:hover {
+  background: #202020;
+  color: #fff4d7;
+}

@@ -116,7 +116,7 @@ Sebuah proyek Django sederhana sebagai Tugas Mata Kuliah Pemrograman Berbasis Pl
 ### Jawaban dari Pertanyaan
 
 1. **Bagan Arsitektur Django**
-![](static/bagan.png)
+![](static/images/raster/bagan.png)
 Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat diteruskan ke View yang sesuai. kemudian View tersebut akan membaca/menulis data di Model dan menggunakan Template untuk menampilkan dan mengembalikan _response_ ke _user_
 
 2. **Mengapa perlu menggunakan virtual environment untuk membuat suatu proyek**

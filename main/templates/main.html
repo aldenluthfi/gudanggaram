@@ -1,6 +1,67 @@
-<h1>{{ app_name }} Page</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+{% block meta %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<div id="home">
+    <div id="logo">
+        <img src="{% static 'images/vector/Logo.svg' %}"/><br>
+    </div>
+
+    <div class="ornament">
+        <img src="{% static 'images/vector/Ornaments1.svg' %}"/>
+    </div>
+
+    <div class="container">
+        <div class="scroll">
+            <img class="title" src="{% static 'images/vector/Title.svg' %}"/>
+            <img class="title" src="{% static 'images/vector/Title.svg' %}"/>
+        </div>
+    </div>
+
+    <p>Things here don't make sense, it's not supposed to...</p><br>
+</div>
+
+<div id="datatable">
+    <p>
+        you have {{salts.count}} salts in your database
+    </p>
+
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+
+        {% for salt in salts %}
+            <tr>
+                <td>{{salt.name}}</td>
+                <td>{{salt.amount}}</td>
+                <td>{{salt.description}}</td>
+                <td id="delete">
+                    <a href="{% url 'main:delete' salt.id %}">
+                        <button class="tablebutton">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div id="create">
+    <a href="{% url 'main:create' %}">
+        <button class="button">
+            Create Salt
+        </button>
+    </a>
+</div>
+
+
+{% endblock content %}
