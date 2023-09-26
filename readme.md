@@ -311,3 +311,37 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
 5. **XML by ID**
 ![](static/images/raster/XMLID.png)
+
+## Tugas 4
+
+## Proses Implementasi Login Page
+
+1. Membuat app baru bernama ```login``` serta laman-laman yang dimilikinya seperti register, login dan logout (walaupun logout tidak mempunyai tampilan hanya mengarahkan ke laman login lagi)
+
+2. Melakukan routing url seperti biasa untuk mengatur alur tampilan laman
+
+3. Menerapkan decorator keharusan login terutama pada laman utama sehingga perlu login untuk mengaksesnya
+
+4. Mengimplementasikan cookie sehingga user masih berstatus login ketika menjelajahi laman utama
+
+5. Menambahkan field baru pada Model utama yaitu ```user``` yang akan diasosiasikan dengan barang-barang khusus untuk user tersebut, sehingga user yang berbeda akan memiliki akses ke barang yang berbeda
+
+6. Melakukan migrasi database untuk mensinkronkan database pada keseluruhan proyek
+
+## Jawaban dari Pertanyaan
+
+1. **Kelebihan dan Kekurangan Django UserCreationForm**
+
+Django UserCreationForm adalah sebuah bentuk form bawaan yang disediakan oleh Django untuk memungkinkan pengembang web dengan mudah membuat *user registration form* dalam aplikasi Django. Form ini memungkinkan pengguna untuk membuat akun dengan mengisi informasi seperti *username* dan *password*. Kelebihan dari fitur bawaan ini antara lain kemudahan penggunaannya, validasi yang telah disematkan, dan integrasi dengan sistem Django. Namun, fitur bawaan ini tidak memberikan banyak ruang dalam segi desain tampilan dan *customization*.
+
+2. **Autentikasi vs Otorisasi**
+
+Autentikasi adalah proses verifikasi identitas pengguna. Dalam konteks Django, ini berarti memeriksa apakah pengguna yang mencoba mengakses aplikasi adalah pengguna yang sah. Sedangkan, Otorisasi adalah proses mengontrol apa yang diizinkan atau tidak diizinkan pengguna lakukan setelah mereka berhasil diotentikasi. Ini melibatkan penentuan hak akses dan izin apa yang dimiliki pengguna.
+
+3. **Cookies dan Penggunaannya**
+
+Cookies adalah data kecil yang disimpan pada perangkat pengguna oleh server web. Mereka digunakan untuk menyimpan informasi terkait sesi atau preferensi pengguna di antara kunjungan ke situs web. Django menggunakan cookies untuk mengelola data sesi pengguna. Ketika pengguna masuk atau berinteraksi dengan aplikasi, Django dapat menyimpan informasi tentang sesi pengguna (seperti ID sesi) dalam cookie.
+
+4. **Keamanan Cookie**
+
+Pada dasarnya, penggunaan cookies tidak aman karena data yang disimpan di dalamnya dapat diakses dan dimanipulasi oleh pihak yang tidak sah jika tidak diimplementasikan dengan benar. Risiko potensial termasuk pencurian informasi pengguna, peretasan sesi, dan penyadapan data sensitif. Untuk mengurangi risiko ini, pengembang harus mengikuti praktik terbaik keamanan, seperti mengenkripsi data yang disimpan dalam cookies, menggunakan atribut keamanan seperti HttpOnly dan Secure (untuk menghindari JavaScript akses dan memastikan penggunaan HTTPS), dan menyimpan sesi pengguna yang sensitif di sisi server bukan di cookies.
