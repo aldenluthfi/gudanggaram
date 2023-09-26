@@ -3,15 +3,19 @@ from main.models import Salts
 from django.http import HttpResponseRedirect
 from main.forms import SaltsForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='/login')
 def main_page(request):
 
-    salts = Salts.objects.all()
+    salts = Salts.objects.filter(user=request.user)
 
     context = {
-        'name': 'Alden Luthfi',
+        'name': request.user.username,
         'class': 'DDP B',
-        'salts': salts
+        'salts': salts,
+        'last_login': request.COOKIES['last_login']
     }
 
     return render(request, "main.html", context)
@@ -20,7 +24,9 @@ def create_page(request):
     form = SaltsForm(request.POST or None)
 
     if request.method == "POST" and form.is_valid():
-        form.save()
+        product = form.save(commit=False)
+        product.user = request.user
+        product.save()
         return HttpResponseRedirect(reverse('main:main_page'))
 
     context = {'form': form}

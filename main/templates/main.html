@@ -62,6 +62,12 @@
         </button>
     </a>
 </div>
-
-
+<div>
+    <a href="{% url 'login:logout' %}">
+        <button class="logout">
+            Logout
+        </button>
+    </a>
+</div>
+<h5>Last login: {{ last_login }}</h5>
 {% endblock content %}
