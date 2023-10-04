@@ -84,3 +84,7 @@ body {
 #delete {
   text-align: center;
 }
+
+tr:last-child {
+  background: #ffc300;
+}
