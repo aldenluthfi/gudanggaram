@@ -314,7 +314,7 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
 ## Tugas 4
 
-## Proses Implementasi Login Page
+### Proses Implementasi Login Page
 
 1. Membuat app baru bernama ```login``` serta laman-laman yang dimilikinya seperti register, login dan logout (walaupun logout tidak mempunyai tampilan hanya mengarahkan ke laman login lagi)
 
@@ -328,7 +328,7 @@ Terlihat bahwa _request_  dari user akan diproses terlebih dahulu sehingga dapat
 
 6. Melakukan migrasi database untuk mensinkronkan database pada keseluruhan proyek
 
-## Jawaban dari Pertanyaan
+### Jawaban dari Pertanyaan
 
 1. **Kelebihan dan Kekurangan Django UserCreationForm**
 
@@ -345,3 +345,50 @@ Cookies adalah data kecil yang disimpan pada perangkat pengguna oleh server web.
 4. **Keamanan Cookie**
 
 Pada dasarnya, penggunaan cookies tidak aman karena data yang disimpan di dalamnya dapat diakses dan dimanipulasi oleh pihak yang tidak sah jika tidak diimplementasikan dengan benar. Risiko potensial termasuk pencurian informasi pengguna, peretasan sesi, dan penyadapan data sensitif. Untuk mengurangi risiko ini, pengembang harus mengikuti praktik terbaik keamanan, seperti mengenkripsi data yang disimpan dalam cookies, menggunakan atribut keamanan seperti HttpOnly dan Secure (untuk menghindari JavaScript akses dan memastikan penggunaan HTTPS), dan menyimpan sesi pengguna yang sensitif di sisi server bukan di cookies.
+
+## Tugas 5
+
+### Proses Implementasi CSS
+
+1. Membuat folder ```static``` pada semua project dan project app
+
+2. Menambahkan ```base.css``` sebagai basis desain dari semua laman pada projek
+
+3. Menambahkan file-file seperti ```main.css``` sebagai desain laman masing-masing fitur
+
+4. Menambahkan line berikut di file ```main.html``` untuk menghubungkan css dengan html
+
+```html
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+```
+
+5. Menambahkan line berikut di file ```base.html``` untuk menghubungkan css dengan html
+
+```html
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+```
+6. Mengetest aplikasi pada localhost dengan command:
+    ```
+    python manage.py runserver
+    ```
+    kemudian membuka ```http://localhost:8000/``` di _browser_
+
+### Jawaban dari Pertanyaan
+
+1. **Element Selector**
+
+ - Type Selector: memilih semua elemen dengan tipe yang ditentukan. Contoh, jika Anda ingin mengganti gaya semua tag ```<p>```, Anda dapat menggunakan ```p { ... }```
+ - Class Selector: memilih semua elemen dengan atribut ```class``` tertentu.
+ - ID Selector: Selector ini memilih elemen dengan atribut ```id``` tertentu. Berguna untuk mengidentifikasi dan mengatur gaya elemen tertentu.
+
+2. **Tag-Tag pada HTML**
+
+Kebanyakan Tag-tag pada html sebenarnya memberikan konteks pada isi sebuah web, misalnya tag ```<h1>``` adalah judul utama web, ```<h2>``` adalah judul yang pentingnya kurang dari ```<h1>```, dst. tag ```<table>``` adalah untuk membuat table, tag ```<p>``` adalah untuk membuat paragraf, dsb.
+
+3. **Margin vs Padding**
+
+Perbedaan antara Margin dan Padding adalah pada tempatnya, Margin adalah ruang di luar batas elemen. Ini adalah jarak antara elemen tersebut dan elemen lainnya di sekitarnya. Margin digunakan untuk mengontrol jarak antara elemen dengan elemen lain di luar elemen tersebut. Margin tidak memiliki latar belakang atau warna, dan tidak akan memengaruhi tampilan elemen itu sendiri. Padding adalah ruang di dalam batas elemen. Ini adalah jarak antara konten elemen dan batasnya. Padding digunakan untuk mengatur jarak antara konten dalam elemen dan batas elemen tersebut. Padding dapat memiliki latar belakang atau warna, dan akan memengaruhi tampilan elemen dan kontennya.
+
+4. **Bootstrap vs Tailwind**
+
+Tailwind mempromosikan pendekatan utility-first, di mana Anda membangun antarmuka dengan menggabungkan kelas-kelas utilitas ke dalam elemen HTML. Ini memberikan fleksibilitas yang besar dalam merancang tampilan yang sesuai dengan kebutuhan. Sedangkan, Bootstrap menggunakan pendekatan komponen, yang berarti Anda menggunakan komponen-komponen yang sudah dibangun (seperti navbar, card, form) dengan gaya yang sudah ditentukan. Tailwind cenderung memiliki kebebasan desain lebih daripada bootstrap. Tailwind cenderung lebih ringan dan tidak ramah pemula dibanding Bootstrap.
