@@ -29,45 +29,5 @@
     <p>
         you have {{salts.count}} salts in your database
     </p>
-
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-
-        {% for salt in salts %}
-            <tr>
-                <td>{{salt.name}}</td>
-                <td>{{salt.amount}}</td>
-                <td>{{salt.description}}</td>
-                <td id="delete">
-                    <a href="{% url 'main:delete' salt.id %}">
-                        <button class="tablebutton">
-                            Delete
-                        </button>
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
 </div>
-<div id="create">
-    <a href="{% url 'main:create' %}">
-        <button class="button">
-            Create Salt
-        </button>
-    </a>
-</div>
-<div>
-    <a href="{% url 'login:logout' %}">
-        <button class="logout">
-            Logout
-        </button>
-    </a>
-</div>
-<h5>Last login: {{ last_login }}</h5>
 {% endblock content %}

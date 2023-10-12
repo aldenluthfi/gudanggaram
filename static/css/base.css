@@ -1,31 +1,43 @@
 @font-face {
   font-family: 'Cartograph Sans CF';
-  src: ('../fonts/Cartograph Sans CF DemiBold Italic.ttf');
+  src: url('../fonts/Cartograph Sans CF DemiBold Italic.ttf');
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Cartograph Sans CF';
-  src: ('../fonts/Cartograph Sans CF Bold Italic.ttf');
+  src: url('../fonts/Cartograph Sans CF Bold Italic.ttf');
   font-weight: Bold;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Greycliff CF';
-  src: ('../fonts/GreycliffCF-Heavy.otf');
+  font-family: 'Marlin Soft ExtBlk';
+  src: url('../fonts/MarlinSoft-ExtraBlack.otf') format("opentype");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Greycliff CF';
-  src: ('../fonts/GreycliffCF-HeavyOblique.otf');
-  font-style: oblique;
+  font-family: 'Marlin Soft ExtBlk';
+  src: url('../fonts/MarlinSoft-ExtraBlackItalic.otf') format("opentype");
+  font-style: italic;
+}
+
+:root {
+  --light: #fff4d7;
+  --dark: #202020;
+  --transparent: rgba(255, 255, 255, 0);
+  cursor: none !important;
+}
+
+body *, body button {
+  cursor: none !important;
 }
 
 h1 {
-  font-family: 'Greycliff CF';
+  font-family: 'Marlin Soft ExtBlk';
   font-style: normal;
+  font-size: 72px;
 }
 
 h2, h3, h4, h5, h6{
@@ -39,11 +51,12 @@ p {
 }
 
 body {
-  background-color: #fff4d7;
-  color: #202020;
+  background-color: var(--light);
+  color: var(--dark);
   font-family: 'Cartograph Sans CF';
   font-style: italic;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 table {
@@ -53,7 +66,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid var(--dark);
   border-collapse: collapse;
   padding: 1em;
 }
@@ -70,22 +83,43 @@ td {
   font-style: italic;
 }
 
+*.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.smooth-scroll {
+  height: 0em;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--transparent);
+  border: 0.2rem solid var(--dark);
+}
+
 .button {
-  background: rgba(255, 255, 255, 0);
+  background: var(--transparent);
 
   font-family: 'Cartograph Sans CF';
   font-style: italic;
   font-size: 28px;
 
-  border-radius: 0.3em;
-  border: solid 0.1em #202020;
+  border-radius: 50em;
+  border: solid 0.1em var(--dark);
 
   text-align: center;
   height: 2em;
   width: 10em;
-}
-
-.button:hover {
-  background: #202020;
-  color: #fff4d7;
 }

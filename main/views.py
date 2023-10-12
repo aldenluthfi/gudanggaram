@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from main.forms import SaltsForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from hashlib import sha256
 
 
 @login_required(login_url='/login')
@@ -26,6 +27,7 @@ def create_page(request):
     if request.method == "POST" and form.is_valid():
         product = form.save(commit=False)
         product.user = request.user
+        product.sha256sum = sha256(f'{product.user}-{product.name}'.encode()).hexdigest()
         product.save()
         return HttpResponseRedirect(reverse('main:main_page'))
 

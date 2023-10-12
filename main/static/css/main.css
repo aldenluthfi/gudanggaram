@@ -40,7 +40,7 @@ body {
 
   font-family: 'Cartograph Sans CF';
   font-style: italic;
-  font-size: 10px;
+  font-size: 16px;
 
   border: 0px;
 
@@ -67,24 +67,4 @@ body {
 #logo {
   padding-top: 2em;
   padding-bottom: 2em;
-}
-
-#datatable {
-  height: 85vh;
-  width: 100vw;
-  margin: 0;
-}
-
-#create {
-  height: 10vh;
-  width: 100vw;
-  margin: 0;
-}
-
-#delete {
-  text-align: center;
-}
-
-tr:last-child {
-  background: #ffc300;
 }
