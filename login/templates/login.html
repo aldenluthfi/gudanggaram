@@ -11,23 +11,22 @@
     <h1>Hello Again!</h1>
 
     <div class="form">
-        <form method="POST" action="">
+        <form method="POST">
             {% csrf_token %}
             <div class="form-wrapper">
-                <input type="text" name="username" placeholder="Username" class="form-control username">
-                <input type="password" name="password" placeholder="Password" class="form-control password">
-            </div>
-            <div class="submit-wrapper">
-                <input class="clickable button" type="submit" value="Login">
+                <input type="text" name="username" placeholder="Username" class="form-control username clickable"><br>
+                <input type="password" name="password" placeholder="Password" class="form-control password clickable"><br>
+                <input type="submit" hidden />
             </div>
             <div class="message-wrapper">
                {% if messages %}
+                    <br>
                     {% for message in messages %}
                         <a>{{ message }}</a>
                     {% endfor %}
                 {% endif %}
                 <br>
-                Don't have an account yet? <a href="{% url 'login:register' %}" class="clickable">Register Now</a>
+                No account? <a href="{% url 'login:register' %}" class="clickable">Register Now</a>
             </div>
         </form>
         </div>

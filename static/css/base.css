@@ -91,6 +91,10 @@ td {
   user-select: none;
 }
 
+*:focus {
+    outline: none;
+}
+
 .smooth-scroll {
   height: 0em;
 }
@@ -116,10 +120,10 @@ td {
   font-style: italic;
   font-size: 28px;
 
-  border-radius: 50em;
-  border: solid 0.1em var(--dark);
+  border-radius: 0.15em;
+  border: solid 0.18rem var(--dark);
 
   text-align: center;
-  height: 2em;
-  width: 10em;
+  height: 3rem;
+  width: 15rem;
 }
