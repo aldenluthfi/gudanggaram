@@ -1,19 +1,26 @@
 {% extends 'base.html' %} 
+{% load static %}
+
+{% block meta %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock meta %}
 
 {% block content %}
-<h1>Add New Salt</h1>
+<div class="create">
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Add Product"/>
-            </td>
-        </tr>
-    </table>
-</form>
+    <h1>Create a Salt</h1>
 
+    <div class="form">
+        <form method="POST"">
+            {% csrf_token %}
+            <div class="form-wrapper">
+                <input type="text" name="name" placeholder="Name" class="username clickable"><br>
+                <input type="number" name="amount" placeholder="Amount" class="username clickable"><br>
+                <input type="text" name="description" placeholder="Description" class="username clickable"><br>
+                <input type="submit" hidden />
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

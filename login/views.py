@@ -31,8 +31,7 @@ def login_user(request):
             return response
         else:
             messages.info(request, 'Sorry, incorrect username or password. Please try again.')
-    context = {}
-    return render(request, 'login.html', context)
+    return render(request, 'login.html')
 
 def logout_user(request):
     logout(request)
