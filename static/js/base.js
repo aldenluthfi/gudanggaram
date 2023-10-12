@@ -45,6 +45,8 @@ window.addEventListener(
 window.addEventListener(
     "mouseup",
     function (e) {
+        cursorDot.style.background = "var(--transparent)";
+        cursorDot.style.border = "0.2rem solid var(--dark)";
         cursorDot.animate({
             width: '2.5rem',
             height: '2.5rem',

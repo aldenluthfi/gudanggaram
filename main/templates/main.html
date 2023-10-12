@@ -24,10 +24,20 @@
 
     <p>Things here don't make sense, it's not supposed to...</p><br>
 </div>
-
-<div id="datatable">
-    <p>
-        you have {{salts.count}} salts in your database
-    </p>
+<div id="datatable"></div>
+<div>
+    <a href="{% url 'main:create' %}">
+        <button id="button_add" class="clickable button">
+            Add Salt
+        </button>
+    </a>
 </div>
+<div>
+    <a href="{% url 'login:logout' %}">
+        <button class="clickable logout">
+            Logout
+        </button>
+    </a>
+</div>
+<script src="{% static 'js/base.js' %}"></script>
 {% endblock content %}

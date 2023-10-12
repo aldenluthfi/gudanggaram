@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+body *, body button {
+  cursor: none !important;
+}
+
 .tablebutton {
   background: rgba(255, 255, 255, 0);
 
