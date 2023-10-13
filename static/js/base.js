@@ -2,7 +2,6 @@ const body = document.body;
 
 const scrollWrap = document.getElementsByClassName("smooth-scroll")[0];
 const cursorDot = document.getElementsByClassName("cursor-dot")[0];
-const clickables = document.querySelectorAll(".clickable");
 
 height = scrollWrap.getBoundingClientRect().height - 1;
 speed = 0.1;
@@ -45,16 +44,19 @@ window.addEventListener(
 window.addEventListener(
     "mouseup",
     function (e) {
-        cursorDot.style.background = "var(--transparent)";
-        cursorDot.style.border = "0.2rem solid var(--dark)";
-        cursorDot.animate({
-            width: '2.5rem',
-            height: '2.5rem',
-        }, { duration: 200, fill: "forwards", easing:"cubic-bezier(0.3, 0.2, 0.2, 1.4)"});
+        if (!e.target.className.includes("clickable")) {
+            cursorDot.style.background = "var(--transparent)";
+            cursorDot.style.border = "0.2rem solid var(--dark)";
+            cursorDot.animate({
+                width: '2.5rem',
+                height: '2.5rem',
+            }, { duration: 200, fill: "forwards", easing:"cubic-bezier(0.3, 0.2, 0.2, 1.4)"});
+        }
     }
 )
 
-function setClickable() {
+function setClickable(target) {
+    const clickables = target.querySelectorAll(".clickable");
     clickables.forEach(clickable => {
         clickable.addEventListener(
             "mouseover",
@@ -81,4 +83,4 @@ function setClickable() {
     })
 }
 
-setClickable()
+setClickable(document)
