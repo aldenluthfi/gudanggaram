@@ -392,3 +392,65 @@ Perbedaan antara Margin dan Padding adalah pada tempatnya, Margin adalah ruang d
 4. **Bootstrap vs Tailwind**
 
 Tailwind mempromosikan pendekatan utility-first, di mana Anda membangun antarmuka dengan menggabungkan kelas-kelas utilitas ke dalam elemen HTML. Ini memberikan fleksibilitas yang besar dalam merancang tampilan yang sesuai dengan kebutuhan. Sedangkan, Bootstrap menggunakan pendekatan komponen, yang berarti Anda menggunakan komponen-komponen yang sudah dibangun (seperti navbar, card, form) dengan gaya yang sudah ditentukan. Tailwind cenderung memiliki kebebasan desain lebih daripada bootstrap. Tailwind cenderung lebih ringan dan tidak ramah pemula dibanding Bootstrap.
+
+# Tugas 6
+
+## Proses Implementasi AJAX
+
+1. Menambahkan banyak file ```.js``` sehingga bisa mengimplementasi kode asinkronus
+
+2. Menambahkan kode GET secara AJAX, dengan menambahkan function
+```javascript
+async function getProducts() {
+    return fetch("/debug/json").then((res) => res.json())
+}
+```
+ke dalam file ```main.js```
+
+3. Menambahkan kode POST secara AJAX, dengan menambahkan function
+```javascript
+async function refreshSalts() {
+    document.getElementById("datatable").innerHTML = ""
+    const products = await getProducts();
+    let counter = 0;
+    let htmlString = `
+        <tr>
+    `
+
+    products.forEach((item) => {
+        if (counter < 10) {
+            if (counter % 5 == 0) {
+                htmlString += `
+                </tr>
+                <tr>
+                `
+            }
+            htmlString += `
+            <td>
+                <img src="../static/images/vector/${(parseInt(item.fields.sha256sum, 16) % 22) + 1}.svg"/>
+                <button class="clickable button" id="button_delete" onClick="deleteSalt('${item.fields.sha256sum}')">
+                    Delete
+                </button>
+            </td>`
+        }
+        counter++
+    })
+
+    htmlString += "</tr>"
+    document.getElementById("datatable").innerHTML = htmlString
+    document.getElementById("salt_count").innerHTML = `You have ${products.length} salts in your database...`
+}
+```
+ke dalam file ```main.js```
+
+4. Menjalankan command ```python manage.py collectstatic``` untuk merapikan semua static files
+
+## Jawaban dari Pertanyaan
+
+1. Dalam pemrograman sinkron, tugas-tugas dieksekusi satu per satu dalam urutan yang telah ditentukan. Artinya, program menunggu satu tugas selesai sebelum melanjutkan ke tugas berikutnya. Ini berarti jika ada tugas yang memakan waktu, seluruh program akan terhenti. Dalam pemrograman asinkron, tugas-tugas dieksekusi secara non-blok, yang berarti program dapat melanjutkan menjalankan tugas-tugas lainnya tanpa harus menunggu tugas yang sedang berjalan selesai. Ini memungkinkan program untuk tetap responsif, terutama saat ada operasi yang memakan waktu seperti mengambil data dari server atau melakukan operasi I/O. Intinya, web harus direload untuk melihat perubahan
+
+2. Paradigma ini fokus pada penggunaan peristiwa (events) sebagai pemicu untuk menjalankan tindakan tertentu. Dalam konteks JavaScript dan AJAX, ini berarti program menunggu peristiwa (seperti klik tombol, pengiriman data, atau menerima respons dari server) untuk menjalankan fungsi tertentu. Ini memungkinkan program untuk merespons interaksi pengguna atau data yang diterima dari luar dengan cepat dan efisien.
+
+3. AJAX (Asynchronous JavaScript and XML) memanfaatkan pemrograman asinkron untuk mengirim atau menerima data dari server tanpa harus memuat ulang seluruh halaman web. Dalam penerapan ini, Anda menggunakan callback functions atau Promise untuk menangani respons dari server saat data diterima atau dikirim. Ini memungkinkan halaman web untuk tetap responsif tanpa menghalangi interaksi pengguna.
+
+4. Fetch API adalah bagian dari JavaScript yang dibangun ke dalam browser modern. Ini adalah API yang sangat kuat dan lebih modern untuk melakukan permintaan HTTP asinkron. Kelebihan dari Fetch API adalah lebih ringan, lebih sederhana, dan lebih fleksibel. Anda dapat menggunakan Promise dengan Fetch API, yang membuat penanganan asinkron lebih mudah dibandingkan dengan callback hell. Fetch API mendukung Promises dan kemampuan memparsing berbagai jenis respon, termasuk JSON. jQuery adalah library JavaScript yang memiliki fungsi untuk melakukan AJAX requests dan banyak fitur lainnya untuk manipulasi DOM dan animasi. Sementara jQuery sangat kuat dan mudah digunakan, penggunaannya cenderung lebih berat daripada Fetch API karena jQuery memiliki berbagai fitur lain yang mungkin tidak Anda butuhkan. Ini bisa mempengaruhi performa jika Anda hanya perlu melakukan permintaan AJAX tanpa fitur-fitur tambahan yang ditawarkan jQuery. Mana yang lebih baik adalah selera pribadi, jika tidak ingin mengimport suatu library external maka fetch API lah yang digunakan.

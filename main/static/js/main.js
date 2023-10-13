@@ -21,7 +21,7 @@ async function refreshSalts() {
             htmlString += `
             <td>
                 <img src="../static/images/vector/${(parseInt(item.fields.sha256sum, 16) % 22) + 1}.svg"/>
-                <button class="delete-button" id="button_delete" onClick="deleteSalt('${item.fields.sha256sum}')">
+                <button class="clickable delete-button" id="button_delete" onClick="deleteSalt('${item.fields.sha256sum}')">
                     Delete
                 </button>
             </td>`
@@ -32,6 +32,7 @@ async function refreshSalts() {
     htmlString += "</tr>"
     document.getElementById("datatable").innerHTML = htmlString
     document.getElementById("salt_count").innerHTML = `You have ${products.length} salts in your database...`
+    setClickable()
 }
 
 refreshSalts()
