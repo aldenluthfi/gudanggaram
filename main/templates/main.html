@@ -24,20 +24,18 @@
 
     <p>Things here don't make sense, it's not supposed to...</p><br>
 </div>
-<div id="datatable"></div>
-<div>
-    <a href="{% url 'main:create' %}">
-        <button id="button_add" class="clickable button">
-            Add Salt
-        </button>
-    </a>
+<div class="data">
+    <h1 id="salt_count"></h1>
+    <div class="table-wrapper">
+        <table id="datatable"></table>
+    </div>
+    <div>
+        <a href="{% url 'main:create' %}">
+            <button id="button_add" class="clickable button">
+                Add Salt
+            </button>
+        </a>
+    </div>
 </div>
-<div>
-    <a href="{% url 'login:logout' %}">
-        <button class="clickable logout">
-            Logout
-        </button>
-    </a>
-</div>
-<script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock content %}

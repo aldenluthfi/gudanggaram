@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from hashlib import sha256
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login')
 def main_page(request):
@@ -34,8 +35,8 @@ def create_page(request):
 
     return render(request, "create.html", context)
 
-def salt_detail(request, id):
-    salt = Salts.objects.get(id=id)
+def salt_detail(request, hash):
+    salt = Salts.objects.get(sha256sum=hash)
 
     context = {
         'salt': salt
@@ -43,6 +44,12 @@ def salt_detail(request, id):
 
     return render(request, "detail.html", context)
 
-def delete_salt(request, id):
-    Salts.objects.get(id=id).delete()
+@csrf_exempt
+def delete_salt(request, hash):
+    print(request)
+    if request.method == 'DELETE':
+        print("DELETE")
+        target = Salts.objects.filter(sha256sum=hash)
+        target.delete()
+
     return HttpResponseRedirect(reverse('main:main_page'))

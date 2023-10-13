@@ -6,18 +6,20 @@ body *, body button {
   cursor: none !important;
 }
 
-.tablebutton {
-  background: rgba(255, 255, 255, 0);
-
-  font-family: 'Cartograph Sans CF';
-  font-style: italic;
-  font-size: 28px;
-
+table, th, td {
   border: 0px;
-
   text-align: center;
-  width: 100%;
-  height: 100%;
+  align-items: center;
+  table-layout: fixed;
+}
+
+td {
+  width: 20%;
+  min-width: max-content;
+}
+
+h1 {
+  padding-top: 4rem;
 }
 
 .ornament {
@@ -51,6 +53,24 @@ body *, body button {
   text-align: center;
   width: 100%;
   height: 100%;
+}
+
+.data {
+  width: 100%;
+  height: 100vh;
+}
+
+.table-wrapper {
+  margin-left: 10rem;
+  margin-right: 10rem;
+  height: 70%;
+}
+
+.delete-button {
+  font-family: 'Cartograph Sans CF';
+  font-style: italic;
+  background-color: var(--light);
+  border: 0;
 }
 
 @keyframes rtl {

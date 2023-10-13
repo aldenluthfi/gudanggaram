@@ -3,15 +3,19 @@
   <defs>
     <style>
       .cls-1, .cls-2 {
+        fill: #fff4d7;
+        stroke: #202020;
         stroke-width: 0px;
       }
 
       .cls-2, .cls-3 {
-        fill: #333;
+        fill: #fff4d7;
+        stroke: #202020;
       }
 
       .cls-3 {
-        stroke: #000;
+        fill: #fff4d7;
+        stroke: #202020;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 3.75px;
