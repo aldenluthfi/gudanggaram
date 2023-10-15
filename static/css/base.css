@@ -97,6 +97,8 @@ td {
 
 .smooth-scroll {
   height: 0em;
+  z-index: 2;
+  overflow-y: hidden;
 }
 
 .cursor-dot {

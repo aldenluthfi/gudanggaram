@@ -8,6 +8,11 @@ async function refreshSalts() {
     const products = await getProducts();
     let counter = 0;
     let htmlString = `
+        <col/>
+        <col/>
+        <col/>
+        <col/>
+        <col/>
         <tr>
     `
 

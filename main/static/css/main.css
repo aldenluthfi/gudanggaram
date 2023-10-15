@@ -6,16 +6,21 @@ body *, body button {
   cursor: none !important;
 }
 
-table, th, td {
+table {
   border: 0px;
   text-align: center;
   align-items: center;
   table-layout: fixed;
+  width: 100%;
 }
 
 td {
+  border: 0px;
+  overflow: hidden;
+}
+
+col {
   width: 20%;
-  min-width: max-content;
 }
 
 h1 {

@@ -1,25 +1,5 @@
 const body = document.body;
-
-const scrollWrap = document.getElementsByClassName("smooth-scroll")[0];
 const cursorDot = document.getElementsByClassName("cursor-dot")[0];
-
-height = scrollWrap.getBoundingClientRect().height - 1;
-speed = 0.1;
-
-var offset = 0;
-
-body.style.height = Math.floor(height) + "px";
-
-function smoothScroll() {
-    offset += (window.scrollY - offset) * speed;
-
-    var scroll = "translateY(-" + offset + "px) translateZ(0)";
-    scrollWrap.style.transform = scroll;
-
-    callScroll = requestAnimationFrame(smoothScroll);
-}
-
-smoothScroll();
 
 window.addEventListener(
     "mousemove",
