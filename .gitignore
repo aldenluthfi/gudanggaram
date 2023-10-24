@@ -1,4 +1,4 @@
-#MacOS
+# MacOS
 .DS_Store
 
 # Django
@@ -8,6 +8,7 @@
 __pycache__
 db.sqlite3
 media
+staticfiles
 
 # Backup files
 *.bak
