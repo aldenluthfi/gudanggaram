@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import UserCreationForm
 
+@csrf_exempt
 def login(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -30,6 +31,7 @@ def login(request):
             "message": "Login gagal, periksa kembali email atau kata sandi."
         }, status=401)
 
+@csrf_exempt
 def logout(request):
     username = request.user.username
 
@@ -46,6 +48,7 @@ def logout(request):
         "message": "Logout gagal."
         }, status=401)
 
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         user = UserCreationForm(request.POST)

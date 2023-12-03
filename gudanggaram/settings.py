@@ -27,11 +27,11 @@ SECRET_KEY = 'django-insecure-%b1)w7reteofth$7-y_1+pz7$8#61b$supcnagj)ox6n9#+s$2
 PRODUCTION = env.bool('PRODUCTION', False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://alden-luthfi-tugas.pbp.cs.ui.ac.id']
+CSRF_TRUSTED_ORIGINS = ['https://alden-luthfi-tugas.pbp.cs.ui.ac.id', 'http://127.0.0.1:8000']
 
 
 # Application definition
