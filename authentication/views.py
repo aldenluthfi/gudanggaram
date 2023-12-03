@@ -57,7 +57,6 @@ def register(request):
             return JsonResponse({
                 "status": True,
                 "message": "Successfully Signed Up!",
-                "user_type": "pasien"
             }, status=200)
         else:
             return JsonResponse({
