@@ -31,7 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://alden-luthfi-tugas.pbpcs.ui.ac.id']
+CSRF_TRUSTED_ORIGINS = ['https://alden-luthfi-tugas.pbp.cs.ui.ac.id']
 
 
 # Application definition
