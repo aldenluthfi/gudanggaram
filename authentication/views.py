@@ -68,4 +68,4 @@ def register(request):
         return JsonResponse({
             "status": False,
             "message": "Failed to Sign Up, check your username/password."
-        }, status=401) 
+        }, status=401)
